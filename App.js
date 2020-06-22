@@ -109,15 +109,7 @@ class TranslationApp extends React.Component {
   }
 }
 
-class UserData extends React.Component {
-  render() {
-    return (
-      <>
-        
-      </>
-    );
-  }
-}
+const myIcon = <Icon name="rocket" size={30} color="#900" />;
 
 class VkHeader extends React.Component {
   render() {
@@ -143,7 +135,8 @@ class EditButton extends React.Component {
   render() {
     return (
       // TODO: add icons
-      <TouchableOpacity>
+      <TouchableOpacity style={{alignItems: 'center'}}>
+        <Icon name={this.props.iconName} size={30} color={'dodgerblue'} style={{marginBottom: 5}}/>
         <Text style={{fontSize: 13, color: 'dodgerblue', fontWeight: 'bold'}} >{this.props.text}</Text>
       </TouchableOpacity>
     );
@@ -153,7 +146,8 @@ class EditButton extends React.Component {
 class ProfileInfoButton extends React.Component {
   render() {
     return (
-      <TouchableOpacity style={{marginBottom: 10}}>
+      <TouchableOpacity style={{marginBottom: 10, flexDirection: 'row', alignItems: 'center'}}>
+        <Icon name={this.props.iconName} size={20} style={{marginRight: 10}} color={this.props.color}/>
         <Text style={{
           fontSize: 14,
           color: this.props.color,
@@ -194,20 +188,26 @@ class Post extends React.Component {
           </View>
 
           <View style={{flexDirection: 'row', justifyContent: 'space-between', marginBottom: 10}}>
-            <View style={{width: '60%', flexDirection: "row", justifyContent: 'space-evenly'}}>
-              <TouchableOpacity>
-                <Text style={{color: 'gray'}}>27</Text>
+            <View style={{width: '60%', flexDirection: "row", justifyContent: 'space-between'}}>
+              <TouchableOpacity style={styles.postActive}>
+                <Icon name={'heart-o'} size={20} color={'gray'} />
+                <Text style={{color: 'gray', fontSize: 14}}>27</Text>
               </TouchableOpacity>
-              <TouchableOpacity>
-                <Text style={{color: 'gray'}}>27</Text>
+              <TouchableOpacity style={styles.postActive}>
+                <Icon name={'comment-o'} size={20} color={'gray'} />
+                <Text style={{color: 'gray', fontSize: 14}}>27</Text>
               </TouchableOpacity>
-              <TouchableOpacity>
-                <Text style={{color: 'gray'}}>27</Text>
+              <TouchableOpacity style={styles.postActive}>
+                <Icon name={'share'} size={20} color={'gray'}/>
+                <Text style={{color: 'gray', fontSize: 14}}>27</Text>
               </TouchableOpacity>
             </View>
-            <Text style={{color: 'gray'}}>
-              2K
-            </Text>
+            <View style={{width: 45, flexDirection: 'row', justifyContent: 'space-between'}}>
+              <Icon name={'eye'} size={20} color={'gray'}/>
+              <Text style={{color: 'gray'}}>
+                2K
+              </Text>
+            </View>
           </View>
 
         </View>
@@ -228,25 +228,26 @@ class VKPage extends React.Component {
               <Text style={{fontSize: 15, color: 'dodgerblue'}}>Редактировать</Text>
             </TouchableOpacity>
             <View style={styles.profilSettingsWrapper}>
-              <EditButton text="История" />
-              <EditButton text="Запись"/>
-              <EditButton text="Фото"/>
-              <EditButton text="Трансляция"/>
+              <EditButton text="История" iconName='camera' />
+              <EditButton text="Запись" iconName='pencil' />
+              <EditButton text="Фото" iconName='picture-o' />
+              <EditButton text="Трансляция" iconName='bullseye' />
             </View>
             <View style={styles.profilInfoWrapper}>
-              <ProfileInfoButton text="Город: Нижний Новгород" color="gray" fontWeight="100"/>
-              <ProfileInfoButton text="Место работы: безработный" color="gray" fontWeight="100"/>
-              <ProfileInfoButton text="30 подписчиков" color="gray" fontWeight="100"/>
-              <ProfileInfoButton text="Подробная информация" color="dodgerblue" fontWeight="bold"/>
+              <ProfileInfoButton iconName='home' text="Город: Нижний Новгород" color="gray" fontWeight="100"/>
+              <ProfileInfoButton iconName='building-o' text="Место работы: безработный" color="gray" fontWeight="100"/>
+              <ProfileInfoButton iconName='user-o' text="30 подписчиков" color="gray" fontWeight="100"/>
+              <ProfileInfoButton iconName='exclamation-circle' text="Подробная информация" color="dodgerblue" fontWeight="bold"/>
             </View>
 
             <View style={{width: '90%'}}>
               {/* TODO: arrow-icon */}
-              <TouchableOpacity style={{marginBottom: 10}}>
-                <View style={{flexDirection: 'row', justifyContent: 'space-between', width: '40%'}}>
+              <TouchableOpacity style={{marginBottom: 10, flexDirection: 'row', justifyContent: 'space-between'}}>
+                <View style={{flexDirection: 'row', justifyContent: 'space-between', width: '40%', alignItems: 'center'}}>
                   <Text style={{fontSize: 16, fontWeight: 'bold'}}>ФОТОГРАФИИ</Text>
                   <Text>23</Text>
                 </View>
+                <Icon name={'arrow-right'} size={20} color={'lightgray'}/>
               </TouchableOpacity>
               <View style={{width: "100%", alignContent: 'center'}}>
                 <View style={[styles.photoRow, {marginBottom: 5}]}>
@@ -271,7 +272,7 @@ class VKPage extends React.Component {
                 placeholder="Что у Вас нового?"
                 style={{width: '60%', backgroundColor: 'whitesmoke', borderRadius: 10, height: 40}}
               />
-              <Button title="d"/>
+              <Icon name={'picture-o'} color={'gray'} size={30} />
             </View>
           </View>
           
@@ -321,7 +322,7 @@ class App extends React.Component {
 
     return (
       <NavigationContainer>
-        <Stack.Navigator initialRouteName='Home'>
+        <Stack.Navigator initialRouteName='VkPage'>
           <Stack.Screen
             name='Home'
             component={TranslationApp} 
@@ -397,14 +398,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     textTransform: 'lowercase',
     height: 40,
-    marginBottom: 10
+    // marginBottom: 10
   },
   profilSettingsWrapper: {
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-around',
     width: '90%',
-    paddingTop: 50,
+    paddingTop: 20,
     paddingBottom: 10,
     marginBottom: 10,
     borderBottomColor: 'whitesmoke',
@@ -431,6 +432,12 @@ const styles = StyleSheet.create({
     justifyContent: 'space-evenly',
     alignItems: 'center',
   },
+  postActive: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    width: 45,
+  }
 });
 
 export default App;
