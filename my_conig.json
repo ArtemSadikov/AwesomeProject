@@ -1,0 +1,24 @@
+{
+    "baseURL": "http://your.api.base.url/api/v1/",
+    "logger": true,
+    "headers": {
+        "content-Type": "application/json"
+    },
+    "statusDescription": {
+        "200": "OK",
+        "401": "Invalid API token"
+    },
+    "successStatus": [
+        200
+    ],
+    "request": {
+        "getSomethingWithQuery": {
+            "method": "get",
+            "url": "something/get"
+        },
+        "getSomethingById": {
+            "method": "get",
+            "url": "something/get/{id}"
+        }
+    }
+}
