@@ -322,7 +322,7 @@ class App extends React.Component {
 
     return (
       <NavigationContainer>
-        <Stack.Navigator initialRouteName='VkPage'>
+        <Stack.Navigator initialRouteName='Home'>
           <Stack.Screen
             name='Home'
             component={TranslationApp} 
