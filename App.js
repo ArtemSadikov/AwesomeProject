@@ -109,16 +109,6 @@ class TranslationApp extends React.Component {
   }
 }
 
-class UserData extends React.Component {
-  render() {
-    return (
-      <>
-        
-      </>
-    );
-  }
-}
-
 class VkHeader extends React.Component {
   render() {
     return (
