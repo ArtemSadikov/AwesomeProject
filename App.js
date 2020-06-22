@@ -216,6 +216,14 @@ class Post extends React.Component {
   }
 }
 
+class BottomToolBarItem extends React.Component {
+  render() {
+    return (
+      <Icon.Button name={this.props.iconName} size={30} color={this.props.color} backgroundColor={'white'} style={{alignItems: 'center'}}/>
+    );
+  }
+}
+
 class VKPage extends React.Component {
   render() {
     return (
@@ -305,8 +313,12 @@ class VKPage extends React.Component {
             <Post data="14 June at 17:06" />
           </View>
         </ScrollView>
-        <View style={{width: '100%', height: 50, backgroundColor: 'white', borderTopColor: 'black', borderTopWidth: 1}}>
-
+        <View style={styles.bottomToolBar}>
+          <BottomToolBarItem iconName='picture-o' color='gray' />
+          <BottomToolBarItem iconName='cubes' color='gray' />
+          <BottomToolBarItem iconName='comment-o' color='gray' />
+          <BottomToolBarItem iconName='history' color='gray' />
+          <BottomToolBarItem iconName='user-circle-o' color='dodgerblue' />
         </View>
       </>
     );
@@ -334,7 +346,7 @@ class App extends React.Component {
               {
                 headerStyle: {
                   backgroundColor: 'white',
-                  shadowColor: 'none'
+                  shadowColor: 'none',
                 }
               }
             }
@@ -437,6 +449,22 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     width: 45,
+  },
+  bottomToolBar: {
+    width: '100%',
+    height: 50,
+    backgroundColor: 'white',
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    shadowColor: "#000",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 12,
+    },
+    shadowOpacity: 0.58,
+    shadowRadius: 16.00,
+    elevation: 24,
   }
 });
 
