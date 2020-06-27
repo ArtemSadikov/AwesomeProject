@@ -1,5 +1,5 @@
 {
-  "name": "AwesomeProject",
+  "name": "ProjectFolder",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -25,6 +25,7 @@
     "react-native-screens": "^2.9.0",
     "react-native-textarea": "^1.0.4",
     "react-native-vector-icons": "^6.6.0",
+    "react-navigation": "^4.4.0",
     "rest-api-helper": "^0.1.51"
   },
   "devDependencies": {
