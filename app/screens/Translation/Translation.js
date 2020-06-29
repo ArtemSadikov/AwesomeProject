@@ -57,8 +57,6 @@ class TranslationApp extends React.Component {
   }
 
   render() {
-    const navigation = this.props.navigation;
-
     return (
       <View style={styles.container}>
         <View style={styles.textareaContainer}>
@@ -90,10 +88,6 @@ class TranslationApp extends React.Component {
             value={this.state.translated}
           />
         </View>
-        <Button
-          title="go to vk"
-          onPress={() => navigation.navigate('VkPage')}
-        />
       </View>
     );
   }

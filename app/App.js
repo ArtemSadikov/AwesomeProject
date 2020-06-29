@@ -6,28 +6,16 @@
  * @flow strict-local
  */
 
-import AppNavigator from './navigation/index';
+import React from 'react';
+import AppNavigator from './navigation';
+import 'react-native-gesture-handler';
+import { View } from 'react-native';
+console.disableYellowBox = true; // disable yellow warnings
 
-import * as React from 'react';
 
 class App extends React.Component {
   render() {
     return (
-      // <NavigationContainer>
-      //   <Stack.Navigator initialRouteName="Home">
-      //     <Stack.Screen name="Home" component={TranslationApp} />
-      //     <Stack.Screen
-      //       name="VkPage"
-      //       component={VkPage}
-      //       options={{
-      //         headerStyle: {
-      //           backgroundColor: 'white',
-      //           shadowColor: 'none',
-      //         },
-      //       }}
-      //     />
-      //   </Stack.Navigator>
-      // </NavigationContainer>
       <AppNavigator />
     );
   }

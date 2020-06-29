@@ -86,12 +86,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-evenly',
     alignItems: 'center',
   },
-  postActive: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    width: 45,
-  },
   bottomToolBar: {
     width: '100%',
     height: 50,
