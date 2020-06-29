@@ -6,21 +6,9 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     padding: 10,
   },
-  textareaContainer: {
-    height: 180,
-    padding: 5,
-    backgroundColor: '#C7FCEC',
-    marginBottom: 20,
-    borderRadius: 10,
-    borderWidth: 2,
-  },
-  textarea: {
-    textAlignVertical: 'top', // hack android
-    height: 170,
-    fontSize: 14,
-    color: '#333',
-  },
-  translateButton: {
+  vkContainer: {
+    alignItems: "center",
+    backgroundColor: 'white',
     marginBottom: 20,
   },
   vkHeader: {
@@ -31,6 +19,20 @@ const styles = StyleSheet.create({
     paddingTop: 15,
     paddingLeft: 10,
     marginBottom: 30,
+  },
+  vkProfileInfoButtonIcon: {
+    marginRight: 10,
+  },
+  vkHeaderImage: {
+    height: 100,
+    width: 100,
+  },
+  vkScroll: {
+    flex: 1,
+  },
+  vkEditButtonText: {
+    fontSize: 15,
+    color: 'dodgerblue',
   },
   vkPhoto: {
     height: 100,
@@ -45,6 +47,39 @@ const styles = StyleSheet.create({
     paddingTop: 10,
     height: 90,
   },
+  vkHeaderUserName: {
+    fontSize: 20,
+    fontWeight: "bold",
+  },
+  vkHeaderUserStatus: {
+    fontSize: 15,
+  },
+  profileEditButton: {
+    alignItems: 'center',
+  },
+  profileEditButtonIcon: {
+    marginBottom: 5,
+  },
+  profileEditButtonText: {
+    fontSize: 13,
+    color: 'dodgerblue',
+    fontWeight: 'bold',
+  },
+  profileInfoButton: {
+    marginBottom: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  profileInfoButtonIcon: {
+    marginRight: 10,
+  },
+  profileInfoButtonText: {
+    fontSize: 14
+  },
+  userPhoto: {
+    width: 100,
+    height: 100,
+  },
   vkEditButton: {
     width: '90%',
     borderRadius: 10,
@@ -53,6 +88,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     textTransform: 'lowercase',
     height: 40,
+  },
+  vkHeaderUserIsOnline: {
+    color: "grey",
   },
   profilSettingsWrapper: {
     flex: 1,
@@ -86,21 +124,68 @@ const styles = StyleSheet.create({
     justifyContent: 'space-evenly',
     alignItems: 'center',
   },
-  bottomToolBar: {
-    width: '100%',
-    height: 50,
+  vkPhotoWrapper: {
+    width: '90%',
+  },
+  vkPhotoWrapperTouch: {
+    marginBottom: 10,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  vkPhotoWrapperTouchView: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '40%',
+    alignItems: 'center',
+  },
+  vkPhotoWrapperTouchText: {
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  vkPhotoGallery: {
+    width: "100%",
+    alignContent: 'center',
+  },
+  vkNewPost: {
+    marginBottom: 20,
+  },
+  vkNewPostImage: {
+    width: 45,
+    height: 45,
+    borderRadius: 22.5,
+  },
+  vkNewPostInput: {
+    width: '60%',
+    backgroundColor: 'whitesmoke',
+    borderRadius: 10,
+    height: 40,
+  },
+  vkPostsWrapper: {
+    alignItems: "center",
     backgroundColor: 'white',
+    width: '100%',
+  },
+  vkPostsDialog: {
+    width: '90%',
+    height: 60,
     flexDirection: 'row',
     justifyContent: 'space-around',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 12,
-    },
-    shadowOpacity: 0.58,
-    shadowRadius: 16.0,
-    elevation: 24,
+    alignItems: 'center',
+    borderBottomColor: 'whitesmoke',
+    borderBottomWidth: 1,
   },
+  vkPostsEnteredText: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: 'black',
+    borderBottomColor: 'dodgerblue',
+    borderBottomWidth: 2,
+    paddingBottom: 5
+  },
+  vkPostsDiologText: {
+    fontSize: 16,
+    color: 'lightgray',
+  }
 });
 
 export default styles;

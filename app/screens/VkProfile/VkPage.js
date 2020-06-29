@@ -27,6 +27,30 @@ const IMAGES = [
       source: require('../../resources/images/vk-images/vk-dog-dark.jpg'),
     }
   },
+  {
+    url: '',
+    props: {
+      source: require('../../resources/images/vk-images/vk-dog-dark.jpg'),
+    }
+  },
+  {
+    url: '',
+    props: {
+      source: require('../../resources/images/vk-images/vk-dog-dark.jpg'),
+    }
+  },
+  {
+    url: '',
+    props: {
+      source: require('../../resources/images/vk-images/vk-dog-dark.jpg'),
+    }
+  },
+  {
+    url: '',
+    props: {
+      source: require('../../resources/images/vk-images/vk-dog-dark.jpg'),
+    }
+  },
 ];
 
 class VkHeader extends React.Component {
@@ -36,13 +60,13 @@ class VkHeader extends React.Component {
         <View style={styles.vkPhoto}>
           <Image 
             source={require('../../resources/images/vk-images/vk-dog-dark.jpg')}
-            style={{height: 100, width: 100}}
+            style={styles.vkHeaderImage}
           />
         </View>
         <View style={styles.vkUserData}>
-          <Text style={{fontSize: 20, fontWeight: "bold"}}>Artem Sadikov</Text>
-          <Text style={{fontSize: 15}}>Creating Visuals</Text>
-          <Text style={{color: "grey"}}>online</Text>
+          <Text style={styles.vkHeaderUserName}>Artem Sadikov</Text>
+          <Text style={styles.vkHeaderUserStatus}>Creating Visuals</Text>
+          <Text style={styles.vkHeaderUserIsOnline}>online</Text>
         </View>
       </View>
     );
@@ -53,9 +77,9 @@ class EditButton extends React.Component {
   render() {
     return (
       // TODO: add icons
-      <TouchableOpacity style={{alignItems: 'center'}}>
-        <Icon name={this.props.iconName} size={30} color={'dodgerblue'} style={{marginBottom: 5}}/>
-        <Text style={{fontSize: 13, color: 'dodgerblue', fontWeight: 'bold'}} >{this.props.text}</Text>
+      <TouchableOpacity style={styles.profileEditButton}>
+        <Icon name={this.props.iconName} size={30} color={'dodgerblue'} style={styles.profileEditButtonIcon}/>
+        <Text style={styles.profileEditButtonText} >{this.props.text}</Text>
       </TouchableOpacity>
     );
   }
@@ -64,13 +88,17 @@ class EditButton extends React.Component {
 class ProfileInfoButton extends React.Component {
   render() {
     return (
-      <TouchableOpacity style={{marginBottom: 10, flexDirection: 'row', alignItems: 'center'}}>
-        <Icon name={this.props.iconName} size={20} style={{marginRight: 10}} color={this.props.color}/>
-        <Text style={{
-          fontSize: 14,
-          color: this.props.color,
-          fontWeight: this.props.fontWeight
-        }}>{this.props.text}</Text>
+      <TouchableOpacity style={styles.profileInfoButton}>
+        <Icon name={this.props.iconName}
+          size={20}
+          style={styles.vkProfileInfoButtonIcon} color={this.props.color}/>
+        <Text style={[styles.profileInfoButtonText,
+              {
+                color: this.props.color,
+                fontWeight: this.props.fontWeight,
+              }
+            ]
+          }>{this.props.text}</Text>
       </TouchableOpacity>
     );
   }
@@ -80,17 +108,9 @@ class UserPhoto extends React.Component {
   render() {
     return (
       <Image 
-        style={{width: 100, height: 100}}
+        style={styles.userPhoto}
         source={this.props.photo}
       />
-    );
-  }
-}
-
-class BottomToolBarItem extends React.Component {
-  render() {
-    return (
-      <Icon.Button name={this.props.iconName} size={30} color={this.props.color} backgroundColor={'white'} style={{alignItems: 'center'}}/>
     );
   }
 }
@@ -146,12 +166,12 @@ class VkPage extends React.Component {
 
     return (
       <>
-        <ScrollView style={{flex: 1}}>
-          <View style={{alignItems: "center", backgroundColor: 'white', marginBottom: 20}}>
+        <ScrollView style={styles.vkScroll}>
+          <View style={styles.vkContainer}>
             {/* user data gets from database and parametrs in vkHeader */}
             <VkHeader />
             <TouchableOpacity style={styles.vkEditButton}>
-              <Text style={{fontSize: 15, color: 'dodgerblue'}}>Редактировать</Text>
+              <Text style={styles.vkEditButtonText}>Редактировать</Text>
             </TouchableOpacity>
             <View style={styles.profilSettingsWrapper}>
               <EditButton text="История" iconName='camera' />
@@ -166,16 +186,16 @@ class VkPage extends React.Component {
               <ProfileInfoButton iconName='exclamation-circle' text="Подробная информация" color="dodgerblue" fontWeight="bold"/>
             </View>
 
-            <View style={{width: '90%'}}>
+            <View style={styles.vkPhotoWrapper}>
               {/* TODO: arrow-icon */}
-              <TouchableOpacity style={{marginBottom: 10, flexDirection: 'row', justifyContent: 'space-between'}}>
-                <View style={{flexDirection: 'row', justifyContent: 'space-between', width: '40%', alignItems: 'center'}}>
-                  <Text style={{fontSize: 16, fontWeight: 'bold'}}>ФОТОГРАФИИ</Text>
+              <TouchableOpacity style={styles.vkPhotoWrapperTouch}>
+                <View style={styles.vkPhotoWrapperTouchView}>
+                  <Text style={styles.vkPhotoWrapperTouchText}>ФОТОГРАФИИ</Text>
                   <Text>23</Text>
                 </View>
                 <Icon name={'arrow-right'} size={20} color={'lightgray'}/>
               </TouchableOpacity>
-              <View style={{width: "100%", alignContent: 'center'}}>
+              <View style={styles.vkPhotoGallery}>
               <Modal visible={this.state.showImageViewer} transparent={true}>
                 <ImageViewer imageUrls={IMAGES} enableSwipeDown={true} onSwipeDown={() => this.handleImageViewer()}/>
               </Modal>
@@ -196,51 +216,28 @@ class VkPage extends React.Component {
 
           </View>
 
-          <View style={{marginBottom: 20}}>
+          <View style={styles.vkNewPost}>
             <View style={styles.newPostInput}>
-              <Image source={require('../../resources/images/vk-images/vk-dog-dark.jpg')} style={{width: 45, height: 45, borderRadius: 22.5}}/>
+              <Image source={photos[0]} style={styles.vkNewPostImage}/>
               <TextInput
                 placeholder="Что у Вас нового?"
-                style={{width: '60%', backgroundColor: 'whitesmoke', borderRadius: 10, height: 40}}
+                style={styles.vkNewPostInput}
               />
               <Icon name={'picture-o'} color={'gray'} size={30} />
             </View>
           </View>
           
           <View>
-            <View style={{alignItems: "center", backgroundColor: 'white', width: '100%'}}>
-              <View style={{
-                width: '90%',
-                height: 60,
-                flexDirection: 'row',
-                justifyContent: 'space-around',
-                alignItems: 'center',
-                borderBottomColor: 'whitesmoke',
-                borderBottomWidth: 1,
-                // marginBottom: 20,
-              }}>
-                <Text style={{
-                  fontSize: 16,
-                  fontWeight: 'bold',
-                  color: 'black',
-                  borderBottomColor: 'dodgerblue',
-                  borderBottomWidth: 2,
-                  paddingBottom: 5
-                }}>Все записи</Text>
-                <Text style={{fontSize: 16, color: 'lightgray'}}>Мои записи</Text>
-                <Text style={{fontSize: 16, color: 'lightgray'}}>Архив</Text>
+            <View style={styles.vkPostsWrapper}>
+              <View style={styles.vkPostsDialog}>
+                <Text style={styles.vkPostsEnteredText}>Все записи</Text>
+                <Text style={styles.vkPostsDiologText}>Мои записи</Text>
+                <Text style={styles.vkPostsDiologText}>Архив</Text>
               </View>
             </View>
             {this.renderPost(posts[0])}
           </View>
         </ScrollView>
-        <View style={styles.bottomToolBar}>
-          <BottomToolBarItem iconName='picture-o' color='gray' />
-          <BottomToolBarItem iconName='cubes' color='gray' />
-          <BottomToolBarItem iconName='comment-o' color='gray' />
-          <BottomToolBarItem iconName='history' color='gray' />
-          <BottomToolBarItem iconName='user-circle-o' color='dodgerblue' />
-        </View>
       </>
     );
   }
